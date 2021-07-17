@@ -28,13 +28,22 @@ class ConverterApp(MDApp):
     
     def convert(self, args):
         if self.state == 0:
-            val = int(self.input.text, 2)
-            self.converted.text = str(val)
-            self.label.text = "in decimal is:"
+            try:
+                val = int(self.input.text, 2)
+                self.converted.text = str(val)
+                self.label.text = "in decimal is:"
+            except ValueError:
+                self.label.text = "Wrong value. Try next."
+                self.converted.text = "?"
+            
         else:
-            val = bin(int(self.input.text))[2:]
-            self.converted.text = str(val)
-            self.label.text = "in binary is:"
+            try:
+                val = bin(int(self.input.text))[2:]
+                self.converted.text = str(val)
+                self.label.text = "in binary is:"
+            except ValueError:
+                self.label.text = "Wrong value. Try next."
+                self.converted.text = "?"
 
     def build(self):
         self.state = 0
@@ -68,7 +77,6 @@ class ConverterApp(MDApp):
         #secondary + primary labels
         
         self.label = MDLabel(
-            text = "test",
             halign="center",
             pos_hint={"center_x": 0.5, "center_y": 0.35},
             theme_text_color = "Secondary",
