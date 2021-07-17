@@ -66,7 +66,14 @@ class ConverterApp(MDApp):
         screen.add_widget(self.input)
 
         #secondary + primary labels
-       
+        
+        self.label = MDLabel(
+            text = "test",
+            halign="center",
+            pos_hint={"center_x": 0.5, "center_y": 0.35},
+            theme_text_color = "Secondary",
+        )
+
         self.converted = MDLabel(
             halign="center",
             pos_hint={"center_x": 0.5, "center_y": 0.3},
@@ -74,11 +81,7 @@ class ConverterApp(MDApp):
             font_style = "H5"
         )
 
-        self.label = MDLabel(
-            halign="center",
-            pos_hint={"center_x": 0.5, "center_y": 0.5},
-            theme_text_color = "Secondary",
-        )
+        
 
         screen.add_widget(self.label)
         screen.add_widget(self.converted)
